@@ -28,10 +28,16 @@ public class SysoutResultReporter implements ResultReporter {
 	 * org.bennettweb.rps.player.Player)
 	 */
 	public void report(int round, Player winner) {
-		System.out.println("Round " + round + " was won by player "
-				+ winner.getName());
-		if (winRecord.containsKey(winner)) {
-			winRecord.put(winner, winRecord.get(winner) + 1);
+		if (winner == null) {
+			System.out.println("Round " + round + " was a draw.");
+		} else {
+			System.out.println("Round " + round + " was won by player "
+					+ winner.getName());
+			if (winRecord.containsKey(winner)) {
+				winRecord.put(winner, winRecord.get(winner) + 1);
+			} else {
+				winRecord.put(winner, 1);
+			}
 		}
 	}
 
