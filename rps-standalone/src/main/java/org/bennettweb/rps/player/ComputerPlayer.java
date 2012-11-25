@@ -3,7 +3,10 @@
  */
 package org.bennettweb.rps.player;
 
+import java.util.Random;
+
 import org.bennettweb.rps.hand.Hand;
+import org.bennettweb.rps.hand.HandFactory;
 
 /**
  * An implementation of a player where the computer controls the actions.
@@ -12,14 +15,27 @@ import org.bennettweb.rps.hand.Hand;
  */
 public class ComputerPlayer implements Player {
 
+	private Random rand;
+
+	protected Hand chosenHand;
+
+	protected HandFactory handFactory;
+
+	private String name;
+
+	public ComputerPlayer(String name) {
+		rand = new Random();
+		handFactory = new HandFactory();
+		this.name = name;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.bennettweb.rps.player.Player#initialise()
 	 */
 	public void initialise() {
-		// TODO Auto-generated method stub
-
+		// do nothing
 	}
 
 	/*
@@ -28,8 +44,8 @@ public class ComputerPlayer implements Player {
 	 * @see org.bennettweb.rps.player.Player#choose()
 	 */
 	public void choose() {
-		// TODO Auto-generated method stub
-
+		this.chosenHand = handFactory.choices().get(
+				rand.nextInt(handFactory.choices().size()));
 	}
 
 	/*
@@ -38,8 +54,16 @@ public class ComputerPlayer implements Player {
 	 * @see org.bennettweb.rps.player.Player#draw()
 	 */
 	public Hand draw() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.chosenHand;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.bennettweb.rps.player.Player#getName()
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 }

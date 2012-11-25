@@ -18,4 +18,9 @@ public interface Hand {
 	 * @return The result of comparing the two hands
 	 */
 	HandCompareResult beats(Hand otherHand);
+	
+	/**
+	 * @return This hands name.
+	 */
+	String getName();
 }

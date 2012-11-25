@@ -21,10 +21,15 @@ public interface Player {
 	/**
 	 * Called to initiate the choosing of a hand for this player.
 	 */
-	void choose();
+	void choose() throws PlayerException;
 
 	/**
 	 * Shows the players hand.
 	 */
 	Hand draw();
+	
+	/**
+	 * @return The players name
+	 */
+	String getName();
 }

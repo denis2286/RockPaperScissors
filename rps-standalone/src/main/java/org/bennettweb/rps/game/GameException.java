@@ -3,6 +3,8 @@
  */
 package org.bennettweb.rps.game;
 
+import org.bennettweb.rps.player.PlayerException;
+
 /**
  * Indicates a problem creating a game
  * 
@@ -18,6 +20,10 @@ public class GameException extends Exception {
 
 	public GameException(String message) {
 		super(message);
+	}
+
+	public GameException(String message, Throwable t) {
+		super(message, t);
 	}
 	
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bennettweb.rps.player.Player;
+import org.bennettweb.rps.player.PlayerException;
 
 /**
  * A simple two player implementation of the game.
@@ -20,12 +21,17 @@ public class TwoPlayerGame implements Game {
 	protected List<Player> players;
 
 	protected int numberOfRounds;
+	
+	protected TwoPlayerEngine engine;
+	
+	protected ResultReporter resultReporter;
 
 	/**
 	 * Constructor. Creates the game.
 	 */
 	public TwoPlayerGame() {
 		players = new ArrayList<Player>();
+		engine = new TwoPlayerEngine();
 	}
 
 	/*
@@ -77,11 +83,24 @@ public class TwoPlayerGame implements Game {
 		
 		for (int i = 1; i <= numberOfRounds; i++) {
 			
-			for (Player player : players) {
-				player.choose();
-				player.draw();
+			for (int j=0, n=players.size(); j<n; j++) {
+				try {
+					players.get(j).choose();
+				} catch (PlayerException e) {
+					throw new GameException("Problem occurred running game", e);
+				}
 			}
+			
+			resultReporter.reportChoices(players);
+			Player winner = engine.determineWinner(players);
+			resultReporter.report(i, winner);
 		}
+		
+		resultReporter.summarize();
+	}
+	
+	public void setResultReporter(ResultReporter resultReporter) {
+		this.resultReporter = resultReporter;
 	}
 
 }

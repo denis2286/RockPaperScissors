@@ -9,8 +9,14 @@ package org.bennettweb.rps.hand;
  * @author Steve
  */
 public class RockHand extends AbstractHand {
+	
+	private static final String NAME = "rock";
 
 	public RockHand() {
 		this.addToBeatableHands(ScissorsHand.class);
+	}
+	
+	public String getName() {
+		return NAME;
 	}
 }

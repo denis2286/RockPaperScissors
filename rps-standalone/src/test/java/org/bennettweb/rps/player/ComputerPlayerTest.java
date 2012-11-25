@@ -1,24 +1,32 @@
 package org.bennettweb.rps.player;
 
-import static org.junit.Assert.*;
+import junit.framework.Assert;
 
+import org.bennettweb.rps.hand.Hand;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class ComputerPlayerTest {
+	
+	private ComputerPlayer classUnderTest;
 
-	@Test
-	public void testInitialise() {
-		fail("Not yet implemented");
+	@Before
+	public void setup() {
+		classUnderTest = new ComputerPlayer("Comp1");
 	}
 
 	@Test
 	public void testChoose() {
-		fail("Not yet implemented");
+		classUnderTest.choose();
+		Assert.assertNotNull(classUnderTest.chosenHand);
 	}
 
 	@Test
 	public void testDraw() {
-		fail("Not yet implemented");
+		Hand hand = Mockito.mock(Hand.class);
+		classUnderTest.chosenHand = hand;
+		Assert.assertEquals(hand, classUnderTest.draw());		
 	}
 
 }
