@@ -18,8 +18,9 @@ public interface Game {
 	 * 
 	 * @param player
 	 *            The {@link Player} to add.
+	 * @throws GameException
 	 */
-	void addPlayer(Player player);
+	void addPlayer(Player player) throws GameException;
 
 	/**
 	 * Set the number of rounds to play.

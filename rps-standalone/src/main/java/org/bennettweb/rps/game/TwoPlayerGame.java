@@ -3,6 +3,9 @@
  */
 package org.bennettweb.rps.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bennettweb.rps.player.Player;
 
 /**
@@ -11,11 +14,22 @@ import org.bennettweb.rps.player.Player;
  * @author Steve
  */
 public class TwoPlayerGame implements Game {
+	
+	protected List<Player> players;
+	
+	protected int numberOfRounds;
+	
+	/**
+	 * Constructor. Creates the game.
+	 */
+	public TwoPlayerGame() {
+		players = new ArrayList<Player>();
+	}
 
 	/* (non-Javadoc)
 	 * @see org.bennettweb.rps.game.Game#addPlayer(org.bennettweb.rps.player.Player)
 	 */
-	public void addPlayer(Player player) {
+	public void addPlayer(Player player) throws GameException {
 		// TODO Auto-generated method stub
 
 	}
