@@ -6,10 +6,16 @@ package org.bennettweb.rps.hand;
  * @author Steve
  */
 public interface Hand {
+	
+	enum HandCompareResult {
+		Win,
+		Lose,
+		Draw;
+	}
 
 	/**
 	 * @param otherHand
-	 * @return True if this hand beats the other hand.
+	 * @return The result of comparing the two hands
 	 */
-	boolean beats(Hand otherHand);
+	HandCompareResult beats(Hand otherHand);
 }

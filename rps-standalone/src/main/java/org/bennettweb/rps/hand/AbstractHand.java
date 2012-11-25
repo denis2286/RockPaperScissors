@@ -24,11 +24,14 @@ abstract class AbstractHand implements Hand {
 	 * 
 	 * @see org.bennettweb.rps.hand.Hand#beats(org.bennettweb.rps.hand.Hand)
 	 */
-	public boolean beats(Hand otherHand) {
+	public HandCompareResult beats(Hand otherHand) {
 		if (otherHand == null) {
 			throw new IllegalArgumentException("Can't do compare. OtherHand was null");
 		}
-		return beatableHands.contains(otherHand.getClass());
+		if (otherHand.getClass() == this.getClass()) {
+			return HandCompareResult.Draw;
+		}
+		return beatableHands.contains(otherHand.getClass()) ? HandCompareResult.Win : HandCompareResult.Lose;
 	}
 
 	protected void addToBeatableHands(Class<? extends Hand> hand) {

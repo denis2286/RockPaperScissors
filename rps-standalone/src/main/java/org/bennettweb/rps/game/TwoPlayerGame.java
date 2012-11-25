@@ -14,11 +14,13 @@ import org.bennettweb.rps.player.Player;
  * @author Steve
  */
 public class TwoPlayerGame implements Game {
-	
+
+	private static final int MAX_PLAYERS = 2;
+
 	protected List<Player> players;
-	
+
 	protected int numberOfRounds;
-	
+
 	/**
 	 * Constructor. Creates the game.
 	 */
@@ -26,28 +28,60 @@ public class TwoPlayerGame implements Game {
 		players = new ArrayList<Player>();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.bennettweb.rps.game.Game#addPlayer(org.bennettweb.rps.player.Player)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.bennettweb.rps.game.Game#addPlayer(org.bennettweb.rps.player.Player)
 	 */
 	public void addPlayer(Player player) throws GameException {
-		// TODO Auto-generated method stub
+		if (player == null) {
+			throw new IllegalArgumentException();
+		}
+		if (players.size() == MAX_PLAYERS) {
+			throw new GameException("Game is full. No new players allowed.");
+		}
 
+		if (!players.contains(player)) {
+			players.add(player);
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.bennettweb.rps.game.Game#setNumberOfRound(int)
 	 */
 	public void setNumberOfRound(int numberOfRounds) {
-		// TODO Auto-generated method stub
-
+		if (numberOfRounds < 1) {
+			throw new IllegalArgumentException(
+					"Number of rounds must be at least 1");
+		}
+		this.numberOfRounds = numberOfRounds;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.bennettweb.rps.game.Game#play()
 	 */
-	public void play() {
-		// TODO Auto-generated method stub
-
+	public void play() throws GameException {
+		if (players.size() < MAX_PLAYERS) {
+			throw new GameException("Not enough players registered to play");
+		}
+		
+		// initialise the players
+		for (Player p : players) {
+			p.initialise();
+		}
+		
+		for (int i = 1; i <= numberOfRounds; i++) {
+			
+			for (Player player : players) {
+				player.choose();
+				player.draw();
+			}
+		}
 	}
 
 }

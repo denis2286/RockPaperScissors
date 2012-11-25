@@ -87,7 +87,7 @@ public class TwoPlayerGameTest {
 	}
 
 	@Test
-	public void testPlay() {
+	public void testPlay() throws Exception {
 		// initialise
 		Player player1 = Mockito.mock(Player.class);
 		Player player2 = Mockito.mock(Player.class);
@@ -108,13 +108,13 @@ public class TwoPlayerGameTest {
 	}
 	
 	@Test(expected = GameException.class)
-	public void testPlayNoPlayers() {
+	public void testPlayNoPlayers() throws Exception {
 		classUnderTest.players.clear();
 		classUnderTest.play();
 	}
 	
 	@Test(expected = GameException.class)
-	public void testPlayOnePlayers() {
+	public void testPlayOnePlayers() throws Exception {
 		Player player = Mockito.mock(Player.class);
 		classUnderTest.players.add(player);
 		classUnderTest.play();

@@ -1,10 +1,10 @@
 package org.bennettweb.rps.game;
 
-import static org.junit.Assert.fail;
 import junit.framework.Assert;
 
 import org.bennettweb.rps.game.Engine.Result;
 import org.bennettweb.rps.hand.Hand;
+import org.bennettweb.rps.hand.Hand.HandCompareResult;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -39,7 +39,7 @@ public class DefaultEngineTest {
 	public void testDetermineWinnerPlayer1Wins() {
 		Hand p1Hand = Mockito.mock(Hand.class);
 		Hand p2Hand = Mockito.mock(Hand.class);
-		Mockito.when(p1Hand.beats(p2Hand)).thenReturn(true);
+		Mockito.when(p1Hand.beats(p2Hand)).thenReturn(HandCompareResult.Win);
 		Result result = classUnderTest.determineWinner(p1Hand, p2Hand);
 		Assert.assertEquals(Result.PlayerOne, result);
 	}
@@ -48,7 +48,7 @@ public class DefaultEngineTest {
 	public void testDetermineWinnerPlayer2Wins() {
 		Hand p1Hand = Mockito.mock(Hand.class);
 		Hand p2Hand = Mockito.mock(Hand.class);
-		Mockito.when(p1Hand.beats(p2Hand)).thenReturn(false);
+		Mockito.when(p1Hand.beats(p2Hand)).thenReturn(HandCompareResult.Lose);
 		Result result = classUnderTest.determineWinner(p1Hand, p2Hand);
 		Assert.assertEquals(Result.PlayerTwo, result);
 	}
@@ -57,7 +57,7 @@ public class DefaultEngineTest {
 	public void testDetermineWinnerDraw() {
 		Hand p1Hand = Mockito.mock(Hand.class);
 		Hand p2Hand = Mockito.mock(Hand.class);
-		Mockito.when(p1Hand.beats(p2Hand)).thenReturn(false);
+		Mockito.when(p1Hand.beats(p2Hand)).thenReturn(HandCompareResult.Draw);
 		Result result = classUnderTest.determineWinner(p1Hand, p2Hand);
 		Assert.assertEquals(Result.Draw, result);
 	}

@@ -12,5 +12,4 @@ public class PaperHand extends AbstractHand {
 	public PaperHand() {
 		this.addToBeatableHands(RockHand.class);
 	}
-
 }

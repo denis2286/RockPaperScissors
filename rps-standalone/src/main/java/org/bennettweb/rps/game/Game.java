@@ -32,5 +32,5 @@ public interface Game {
 	/**
 	 * Play the game.
 	 */
-	void play();
+	void play() throws GameException;
 }

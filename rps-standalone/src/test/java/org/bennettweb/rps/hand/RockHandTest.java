@@ -2,6 +2,7 @@ package org.bennettweb.rps.hand;
 
 import junit.framework.Assert;
 
+import org.bennettweb.rps.hand.Hand.HandCompareResult;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,18 +23,18 @@ public class RockHandTest {
 	@Test
 	public void testBeatsRock() {
 		RockHand rock = new RockHand();
-		Assert.assertFalse(classUnderTest.beats(rock));
+		Assert.assertEquals(HandCompareResult.Draw, classUnderTest.beats(rock));
 	}
 	
 	@Test
 	public void testBeatsPaper() {
 		PaperHand paper = new PaperHand();
-		Assert.assertFalse(classUnderTest.beats(paper));
+		Assert.assertEquals(HandCompareResult.Lose, classUnderTest.beats(paper));
 	}
 	
 	@Test
 	public void testBeatsScissors() {
 		ScissorsHand scissors = new ScissorsHand();
-		Assert.assertTrue(classUnderTest.beats(scissors));
+		Assert.assertEquals(HandCompareResult.Win, classUnderTest.beats(scissors));
 	}
 }
