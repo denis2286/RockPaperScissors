@@ -1,8 +1,7 @@
 package org.bennettweb.rps;
 
 /**
- * Hello world!
- *
+ * The main application class to run.
  */
 public class App 
 {
