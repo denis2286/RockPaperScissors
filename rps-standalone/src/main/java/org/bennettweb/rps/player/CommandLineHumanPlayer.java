@@ -11,11 +11,11 @@ import org.bennettweb.rps.hand.HandFactory;
 
 /**
  * The implementation of a player which takes input from a real user of the
- * application.
+ * application. Reads values to play from the command line.
  * 
  * @author Steve
  */
-public class HumanPlayer implements Player {
+public class CommandLineHumanPlayer implements Player {
 
 	protected Hand chosenHand;
 
@@ -25,7 +25,7 @@ public class HumanPlayer implements Player {
 
 	private String name;
 
-	public HumanPlayer() {
+	public CommandLineHumanPlayer() {
 		handFactory = new HandFactory();
 		commandLineIO = new CommandLineIO();
 		name = "player1";
@@ -41,7 +41,8 @@ public class HumanPlayer implements Player {
 		try {
 			this.name = commandLineIO.readLine();
 		} catch (IOException e) {
-			commandLineIO.print("I didn't catch that, so I'm going to call you player1");
+			commandLineIO
+					.print("I didn't catch that, so I'm going to call you player1");
 			this.name = "player1";
 		}
 	}
@@ -76,7 +77,12 @@ public class HumanPlayer implements Player {
 	public Hand draw() {
 		return this.chosenHand;
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.bennettweb.rps.player.Player#getName()
+	 */
 	public String getName() {
 		return this.name;
 	}

@@ -12,13 +12,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class HumanPlayerTest {
+public class CommandLineHumanPlayerTest {
 	
-	private HumanPlayer classUnderTest;
+	private CommandLineHumanPlayer classUnderTest;
 	
 	@Before
 	public void setup() {
-		classUnderTest = new HumanPlayer();
+		classUnderTest = new CommandLineHumanPlayer();
 	}
 
 	@Test
