@@ -4,8 +4,9 @@
 package org.bennettweb.rps.hand;
 
 /**
- * @author Steve
+ * Exception inicating a bad hand choice.
  * 
+ * @author Steve
  */
 public class HandChoiceException extends Exception {
 

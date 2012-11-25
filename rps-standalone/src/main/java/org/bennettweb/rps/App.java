@@ -9,11 +9,13 @@ import org.bennettweb.rps.game.ResultReporter;
 import org.bennettweb.rps.game.SysoutResultReporter;
 import org.bennettweb.rps.game.TwoPlayerGame;
 import org.bennettweb.rps.player.ComputerPlayer;
-import org.bennettweb.rps.player.HumanPlayer;
+import org.bennettweb.rps.player.CommandLineHumanPlayer;
 import org.bennettweb.rps.player.Player;
 
 /**
  * The main application class to run.
+ * 
+ * Run this class with no-args and follow the onscreen instructions to play.
  */
 public class App {
 
@@ -34,7 +36,7 @@ public class App {
 
 		Player player1 = getPlayer(1);
 		Player player2 = null;
-		if (player1 instanceof HumanPlayer) {
+		if (player1 instanceof CommandLineHumanPlayer) {
 			System.out.println("Player one is a human, so player two will be the computer");
 			player2 = new ComputerPlayer("Player2");
 		} else {
@@ -75,7 +77,7 @@ public class App {
 			if (val == 1) {
 				player = new ComputerPlayer("Player"+playerNum);
 			} else if (val == 2) {
-				player = new HumanPlayer();
+				player = new CommandLineHumanPlayer();
 			} else {
 				System.err.println("Not a valid choice, try again.");
 				continue;

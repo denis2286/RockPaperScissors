@@ -11,6 +11,8 @@ import java.util.Map.Entry;
 import org.bennettweb.rps.player.Player;
 
 /**
+ * Reports out to the console, storing the amount of games won.
+ * 
  * @author Steve
  */
 public class SysoutResultReporter implements ResultReporter {

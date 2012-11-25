@@ -14,7 +14,7 @@ import org.bennettweb.rps.hand.Hand;
  * Helper class for communicating via command line. 
  * @author Steve
  */
-public class CommandLineIO {
+class CommandLineIO {
 
 	public void printChoices(List<Hand> choices) {
 		StringBuffer message = new StringBuffer("Please choose [");

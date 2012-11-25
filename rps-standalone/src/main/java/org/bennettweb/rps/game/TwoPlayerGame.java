@@ -10,7 +10,9 @@ import org.bennettweb.rps.player.Player;
 import org.bennettweb.rps.player.PlayerException;
 
 /**
- * A simple two player implementation of the game.
+ * A simple two player implementation of the game. Needs to be configured with
+ * the number of rounds, the players and the {@link ResultReporter} to use for
+ * reporting the response.
  * 
  * @author Steve
  */
@@ -21,9 +23,9 @@ public class TwoPlayerGame implements Game {
 	protected List<Player> players;
 
 	protected int numberOfRounds;
-	
+
 	protected TwoPlayerEngine engine;
-	
+
 	protected ResultReporter resultReporter;
 
 	/**
@@ -75,15 +77,17 @@ public class TwoPlayerGame implements Game {
 		if (players.size() < MAX_PLAYERS) {
 			throw new GameException("Not enough players registered to play");
 		}
-		
+
 		// initialise the players
 		for (Player p : players) {
 			p.initialise();
 		}
-		
+
+		// run a number of rounds
 		for (int i = 1; i <= numberOfRounds; i++) {
-			
-			for (int j=0, n=players.size(); j<n; j++) {
+
+			// make each player choose
+			for (int j = 0, n = players.size(); j < n; j++) {
 				try {
 					players.get(j).choose();
 				} catch (PlayerException e) {
@@ -91,14 +95,18 @@ public class TwoPlayerGame implements Game {
 				}
 			}
 			
+			// tell the reporter about the choices
 			resultReporter.reportChoices(players);
+			
+			// then figure out who won and report
 			Player winner = engine.determineWinner(players);
 			resultReporter.report(i, winner);
 		}
-		
+
+		// report the outcome of the battle.
 		resultReporter.summarize();
 	}
-	
+
 	public void setResultReporter(ResultReporter resultReporter) {
 		this.resultReporter = resultReporter;
 	}

@@ -9,7 +9,8 @@ import org.bennettweb.rps.hand.Hand;
 import org.bennettweb.rps.hand.HandFactory;
 
 /**
- * An implementation of a player where the computer controls the actions.
+ * An implementation of a player where the computer controls the actions. Uses a
+ * random number generator to pick a hand to play.
  * 
  * @author Steve
  */
@@ -23,6 +24,12 @@ public class ComputerPlayer implements Player {
 
 	private String name;
 
+	/**
+	 * Creates a new computer player with the given name.
+	 * 
+	 * @param name
+	 *            Name of the player.
+	 */
 	public ComputerPlayer(String name) {
 		rand = new Random();
 		handFactory = new HandFactory();
