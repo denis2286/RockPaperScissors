@@ -13,9 +13,9 @@ The application is built using Maven:
 
 Running
 -------
-Once built, the application produces a jar file called RockPaperScissors.jar. To run the application, run the following from the command line.
+Once built, the application produces a jar. To run the application, run the following from the command line.
 
-`java -jar RockPaperScissors.jar`
+`java -jar rps-standalone-1.0-SNAPSHOT.jar`
 
 Tests
 -----
