@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>rps-standalone</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/bennettweb/RockPaperScissors</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,10 +22,27 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-	<groupId>org.mockito</groupId>
-	<artifactId>mockito-all</artifactId>
-	<version>1.8.5</version>
-	<scope>test</scope>
-</dependency>
+	  <groupId>org.mockito</groupId>
+	  <artifactId>mockito-all</artifactId>
+	  <version>1.8.5</version>
+	  <scope>test</scope>
+	</dependency>
   </dependencies>
+  
+  <build>
+     <plugins>
+	<plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-jar-plugin</artifactId>
+         <configuration>
+       		<archive>
+         		<manifest>
+           			<mainClass>org.bennettweb.rps.App</mainClass>
+          		 	<packageName>org.bennettweb.rps</packageName>
+         		</manifest>
+       		</archive>
+         </configuration>
+     </plugin>
+     </plugins>
+	</build>     
 </project>
