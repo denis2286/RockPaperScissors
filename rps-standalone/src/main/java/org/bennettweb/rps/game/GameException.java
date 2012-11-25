@@ -3,7 +3,6 @@
  */
 package org.bennettweb.rps.game;
 
-import org.bennettweb.rps.player.PlayerException;
 
 /**
  * Indicates a problem creating a game

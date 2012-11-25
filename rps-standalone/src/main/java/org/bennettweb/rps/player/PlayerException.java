@@ -9,9 +9,13 @@ package org.bennettweb.rps.player;
  */
 public class PlayerException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4961876332867302755L;
+
 	public PlayerException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 }

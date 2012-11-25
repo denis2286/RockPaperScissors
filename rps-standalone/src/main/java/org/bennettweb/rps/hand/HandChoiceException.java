@@ -9,9 +9,13 @@ package org.bennettweb.rps.hand;
  */
 public class HandChoiceException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1464321410287878977L;
+
 	public HandChoiceException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 }
