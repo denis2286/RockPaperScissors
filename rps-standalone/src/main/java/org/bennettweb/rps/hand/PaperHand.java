@@ -1,19 +1,16 @@
 package org.bennettweb.rps.hand;
 
 
+
 /**
  * An implementation of the Paper hand.
  * 
  * @author Steve
  */
-public class PaperHand implements Hand {
+public class PaperHand extends AbstractHand {
 
-	/* (non-Javadoc)
-	 * @see org.bennettweb.rps.Hand#beats(org.bennettweb.rps.Hand)
-	 */
-	public boolean beats(Hand otherHand) {
-		// TODO Auto-generated method stub
-		return false;
+	public PaperHand() {
+		this.addToBeatableHands(RockHand.class);
 	}
 
 }

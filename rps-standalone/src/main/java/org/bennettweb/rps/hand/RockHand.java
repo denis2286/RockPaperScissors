@@ -8,16 +8,9 @@ package org.bennettweb.rps.hand;
  * 
  * @author Steve
  */
-public class RockHand implements Hand {
+public class RockHand extends AbstractHand {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.bennettweb.rps.hand.Hand#beats(org.bennettweb.rps.hand.Hand)
-	 */
-	public boolean beats(Hand otherHand) {
-		// TODO Auto-generated method stub
-		return false;
+	public RockHand() {
+		this.addToBeatableHands(ScissorsHand.class);
 	}
-
 }
